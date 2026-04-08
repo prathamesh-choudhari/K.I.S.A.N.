@@ -4,8 +4,7 @@
 #include"globals.h"
 
 void LoadCost(void){
-    FILE *fp=fopen("crop_costs.ccsv", "r");
-
+FILE *fp=fopen("crop_costs.csv","r");
 
 Costcount=0;
 
@@ -16,10 +15,10 @@ cost[Costcount].crop,
 &cost[Costcount].msp,
 &cost[Costcount].sellingPrice,
 &cost[Costcount].yield==6)){
-    Costcount++;
-    if(Costcount>=20){
-        break;
-    }
+Costcount++;
+if(Costcount>=20){
+break;
+}
 }
 fclose(file);
 }
