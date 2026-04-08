@@ -66,8 +66,8 @@ void LoadSoilData(void)
 
 void LoadCost(void)
 {
-     FILE *fp = fopen("soil_data.csv", "r");
-    if (!fp) { printf("  ERROR: Cannot open soil_data.csv!\n"); return; }
+     FILE *fp = fopen("crop_costs.csv", "r");
+    if (!fp) { printf("  ERROR: Cannot open crop_costs.csv!\n"); return; }
     char line[200];
     fgets(line, 200, fp);
     int crop_count=0;
