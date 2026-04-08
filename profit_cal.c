@@ -1,5 +1,6 @@
 void calculateProfit(void) {
     float area, expectedPrice;
+    int cropIndex;
     printf("\n  PROFIT CALCULATOR\n");
 
     while (1) {
@@ -8,7 +9,7 @@ void calculateProfit(void) {
         // if (cropIndex == -1) return;
         // if (cropIndex == -2) continue;
         take_crop();
-        char *name[60];
+        char name[60];
         cropIndex=hash(name);
 
         cost crop;
@@ -30,7 +31,7 @@ void calculateProfit(void) {
         clearInputBuffer();
 
         float seedCostTotal = crop.seedcost * area;
-        float farmingCostTotal = crop.epenses * area;
+        float farmingCostTotal = crop.expenses * area;
         float totalCost = seedCostTotal + farmingCostTotal;
 
         float totalProduction = crop.yield * area;
