@@ -49,14 +49,15 @@ void SateList(void) {
         }
     }
     char temp[NAME_LEN];
-    for (int i = 0; i < state_count - 1; i++)
-        for (int j = 0; j < state_count - i - 1; j++)
+    for (int i = 0; i < Statecount - 1; i++)
+        for (int j = 0; j < Statecount - i - 1; j++)
             if (_stricmp(state_list[j], state_list[j+1]) > 0) {
                 strcpy(temp, state_list[j]);
                 strcpy(state_list[j], state_list[j+1]);
                 strcpy(state_list[j+1], temp);
             }
 }
+
 int SelectCrop(void) {
     int n;
     ShowCrops();
@@ -75,4 +76,11 @@ int SelectCrop(void) {
     }
     printf("Invalid serial number");
     return -2;
+}
+
+void showStates(void) {
+    printf("\n  SELECT YOUR STATE\n");
+    for (int i = 0; i < Statecount; i++)
+        printf("  %2d. %s\n", i + 1, state[i]);
+    printf("  0. Go back\n");
 }
