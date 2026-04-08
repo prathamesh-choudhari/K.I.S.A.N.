@@ -1,0 +1,259 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include "globals.h"
+#include "features.h"
+
+// Note: `soil_db`, `cost_db`, etc. are automatically pulled from globals.h!
+
+int str_icmp(const char *a, const char *b) {
+    while (*a && *b) {
+        int d = tolower((unsigned char)*a) - tolower((unsigned char)*b);
+        if (d) return d;
+        a++; b++;
+    }
+    return tolower((unsigned char)*a) - tolower((unsigned char)*b);
+}
+
+void trim(char *s) {
+    int len = (int)strlen(s);
+    while (len > 0 && (s[len-1]=='\n' || s[len-1]=='\r' || s[len-1]==' '))
+        s[--len] = '\0';
+}
+
+void flush_input(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
+void press_enter(void) {
+    printf("\nPress [Enter] to continue...");
+    flush_input();
+}
+
+void load_soil_data(void) {
+    FILE *fp = fopen("soil_data.csv", "r");
+    if (!fp) { printf("  ERROR: Cannot open soil_data.csv!\n"); return; }
+    char line[MAX_LINE];
+    fgets(line, MAX_LINE, fp);
+    soil_count = 0;
+    while (fgets(line, MAX_LINE, fp) && soil_count < MAX_RECORDS) {
+        trim(line);
+        if (strlen(line) == 0) continue;
+        int n = sscanf(line, "%[^,],%[^,],%[^,],%d,%d,%d,%f,%[^,],%s",
+            soil_db[soil_count].state, soil_db[soil_count].city,
+            soil_db[soil_count].soil_type, &soil_db[soil_count].N,
+            &soil_db[soil_count].P, &soil_db[soil_count].K,
+            &soil_db[soil_count].pH, soil_db[soil_count].best_crop,
+            soil_db[soil_count].season);
+        if (n == 9) soil_count++;
+    }
+    fclose(fp);
+}
+
+void build_state_list(void) {
+    state_count = 0;
+    for (int i = 0; i < soil_count; i++) {
+        int found = 0;
+        for (int j = 0; j < state_count; j++) {
+            if (str_icmp(soil_db[i].state, state_list[j]) == 0) { found = 1; break; }
+        }
+        if (!found && state_count < MAX_STATES) {
+            strcpy(state_list[state_count], soil_db[i].state);
+            state_count++;
+        }
+    }
+    char temp[NAME_LEN];
+    for (int i = 0; i < state_count - 1; i++)
+        for (int j = 0; j < state_count - i - 1; j++)
+            if (str_icmp(state_list[j], state_list[j+1]) > 0) {
+                strcpy(temp, state_list[j]);
+                strcpy(state_list[j], state_list[j+1]);
+                strcpy(state_list[j+1], temp);
+            }
+}
+
+void load_crop_costs(void) {
+    FILE *fp = fopen("crop_costs.csv", "r");
+    if (!fp) { printf("  ERROR: Cannot open crop_costs.csv!\n"); return; }
+    char line[MAX_LINE];
+    fgets(line, MAX_LINE, fp);
+    cost_count = 0;
+    while (fgets(line, MAX_LINE, fp) && cost_count < MAX_CROPS) {
+        trim(line);
+        if (strlen(line) == 0) continue;
+        int n = sscanf(line, "%[^,],%f,%f,%f,%f,%f",
+            cost_db[cost_count].crop, &cost_db[cost_count].seed_cost,
+            &cost_db[cost_count].cultivation_cost, &cost_db[cost_count].msp,
+            &cost_db[cost_count].market_price, &cost_db[cost_count].yield_per_acre);
+        if (n == 6) cost_count++;
+    }
+    fclose(fp);
+}
+
+void show_states(void) {
+    printf("\n  SELECT YOUR STATE\n");
+    for (int i = 0; i < state_count; i++)
+        printf("  %2d. %s\n", i + 1, state_list[i]);
+    printf("  0. Go back\n");
+}
+
+int select_state(void) {
+    int num;
+    show_states();
+    printf("\n  Enter state serial no.: ");
+    int ret = scanf("%d", &num);
+    if (ret == EOF) return -1;
+    if (ret != 1) { flush_input(); printf("  Invalid input.\n"); return -2; }
+    flush_input();
+    if (num == 0) return -1;
+    if (num >= 1 && num <= state_count) return num - 1;
+    printf("  Invalid serial no.\n");
+    return -2;
+}
+
+int select_city(int state_idx) {
+    char *sel_state = state_list[state_idx];
+    int city_indices[MAX_CITIES], city_count = 0;
+    for (int i = 0; i < soil_count; i++)
+        if (str_icmp(soil_db[i].state, sel_state) == 0)
+            city_indices[city_count++] = i;
+
+    printf("\n  CITIES IN %s\n", sel_state);
+    for (int i = 0; i < city_count; i++) {
+        int idx = city_indices[i];
+        printf("  %2d. %s\n", i+1, soil_db[idx].city);
+    }
+    printf("  0. Go back\n");
+
+    int num;
+    printf("\n  Enter city serial no.: ");
+    int ret = scanf("%d", &num);
+    if (ret == EOF) return -1;
+    if (ret != 1) { flush_input(); printf("  Invalid input.\n"); return -2; }
+    flush_input();
+    if (num == 0) return -1;
+    if (num >= 1 && num <= city_count) return city_indices[num - 1];
+    printf("  Invalid serial no.\n");
+    return -2;
+}
+
+void display_crop_report(int idx) {
+    SoilData d = soil_db[idx];
+    printf("\n  CROP REPORT: %s, %s\n", d.city, d.state);
+    printf("  Soil Type    : %s\n", d.soil_type);
+    printf("  pH Level     : %.1f\n", d.pH);
+    printf("  Nitrogen (N) : %d kg/ha\n", d.N);
+    printf("  Phosphorus(P): %d kg/ha\n", d.P);
+    printf("  Potassium(K) : %d kg/ha\n", d.K);
+    printf("  Best Crop    : %s\n", d.best_crop);
+    printf("  Season       : %s\n", d.season);
+
+    if (d.N < 70) printf("  Nitrogen LOW (%d). Apply Urea @ 50 kg/ha.\n", d.N);
+    else if (d.N < 85) printf("  Nitrogen moderate (%d). Light Urea advised.\n", d.N);
+    else printf("  Nitrogen healthy (%d).\n", d.N);
+
+    if (d.P < 30) printf("  Phosphorus LOW (%d). Apply DAP/SSP @ 40 kg/ha.\n", d.P);
+    else printf("  Phosphorus adequate (%d).\n", d.P);
+
+    if (d.K < 35) printf("  Potassium LOW (%d). Apply MOP @ 30 kg/ha.\n", d.K);
+    else printf("  Potassium adequate (%d).\n", d.K);
+
+    if (d.pH < 5.5) printf("  Soil too ACIDIC (%.1f). Apply lime.\n", d.pH);
+    else if (d.pH > 8.0) printf("  Soil too ALKALINE (%.1f). Apply gypsum.\n", d.pH);
+    else printf("  pH in acceptable range (%.1f).\n", d.pH);
+}
+
+void feature_crop_recommendation(void) {
+    printf("\n  CROP RECOMMENDATION\n");
+    while (1) {
+        int si = select_state();
+        if (si == -1) return;
+        if (si == -2) continue;
+        while (1) {
+            int ci = select_city(si);
+            if (ci == -1) break;
+            if (ci == -2) continue;
+            display_crop_report(ci);
+            press_enter();
+        }
+    }
+}
+
+void feature_schemes(void) {
+    FILE *fp = fopen("schemes.txt", "r");
+    if (!fp) { printf("  ERROR: Cannot open schemes.txt!\n"); return; }
+    printf("\n  GOVERNMENT SCHEMES & YOJANAS\n\n");
+    char line[MAX_LINE];
+    while (fgets(line, MAX_LINE, fp)) printf("  %s", line);
+    printf("\n");
+    fclose(fp);
+    press_enter();
+}
+
+void show_crops(void) {
+    printf("\n  Available crops:\n");
+    for (int i = 0; i < cost_count; i++) {
+        printf("  %2d. %-14s", i + 1, cost_db[i].crop);
+        if ((i + 1) % 4 == 0) printf("\n");
+    }
+    if (cost_count % 4 != 0) printf("\n");
+}
+
+int select_crop(void) {
+    int num;
+    show_crops();
+    printf("  Enter crop serial no. (0 to go back): ");
+    int ret = scanf("%d", &num);
+    if (ret == EOF) return -1;
+    if (ret != 1) { flush_input(); printf("  Invalid input.\n"); return -2; }
+    flush_input();
+    if (num == 0) return -1;
+    if (num >= 1 && num <= cost_count) return num - 1;
+    printf("  Invalid serial no.\n");
+    return -2;
+}
+
+void feature_profit_calculator(void) {
+    float land, desired_price;
+    printf("\n  PROFIT CALCULATOR\n");
+
+    while (1) {
+        int ci = select_crop();
+        if (ci == -1) return;
+        if (ci == -2) continue;
+        CropCost c = cost_db[ci];
+
+        printf("\n  Enter your land area (in acres): ");
+        int ret_land = scanf("%f", &land);
+        if (ret_land == EOF) return;
+        if (ret_land != 1 || land <= 0) { printf("  Invalid area.\n"); flush_input(); continue; }
+        flush_input();
+
+        float total_seed   = c.seed_cost * land;
+        float total_cult   = c.cultivation_cost * land;
+        float total_invest = total_seed + total_cult;
+        float total_yield  = c.yield_per_acre * land;
+        
+        float msp_revenue    = total_yield * c.msp;
+        float msp_profit     = msp_revenue - total_invest;
+        float market_revenue = total_yield * c.market_price;
+        float market_profit  = market_revenue - total_invest;
+
+        printf("\n  PROFIT REPORT: %s | %.1f Acres\n", c.crop, land);
+        printf("  Total Seed Cost      : Rs. %.2f\n", total_seed);
+        printf("  Total Cult. Cost     : Rs. %.2f\n", total_cult);
+        printf("  TOTAL INVESTMENT     : Rs. %.2f\n", total_invest);
+        printf("  Total Yield          : %.2f quintals\n", total_yield);
+
+        if (c.msp > 0) {
+            printf("  Revenue at MSP       : Rs. %.2f\n", msp_revenue);
+            printf("  Net at MSP           : Rs. %.2f %s\n", msp_profit, msp_profit >= 0 ? "[PROFIT]" : "[LOSS]");
+        }
+        printf("  Revenue at Market    : Rs. %.2f\n", market_revenue);
+        printf("  Net at Market        : Rs. %.2f %s\n", market_profit, market_profit >= 0 ? "[PROFIT]" : "[LOSS]");
+
+        press_enter();
+    }
+}
