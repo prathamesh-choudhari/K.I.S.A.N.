@@ -85,32 +85,3 @@ void feature_crop_recommendation(void) {
         }
     }
 }
-void showStates(void) {
-    printf("\n  SELECT YOUR STATE\n");
-    for (int i = 0; i < Statecount; i++)
-        printf("  %2d. %s\n", i + 1, state[i]);
-    printf("  0. Go back\n");
-}
-
-void ShowCrops(void) {
-printf("\nAvailable crops:\n");
-for(int i=0;i<Costcount;i++){
-    printf("%2d.%-14s",i+1,Costdata[i].crop);
-    if((i+1)%4==0) printf("\n");
-}
-if(Costcount%4!=0) printf("\n");
-}
-
-int select_state(void) {
-    int num;
-    showStates();
-    printf("\n  Enter state serial no.: ");
-    int ret = scanf("%d", &num);
-    if (ret == EOF) return -1;
-    if (ret != 1) { flush_input(); printf("  Invalid input.\n"); return -2; }
-    flush_input();
-    if (num == 0) return -1;
-    if (num >= 1 && num <= state_count) return num - 1;
-    printf("  Invalid serial no.\n");
-    return -2;
-}
