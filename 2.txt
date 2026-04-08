@@ -18,21 +18,6 @@ void load_soil_data(void) {
     fclose(fp);
 }
 
-
-int select_state(void) {
-    int num;
-    show_states();
-    printf("\n  Enter state serial no.: ");
-    int ret = scanf("%d", &num);
-    if (ret == EOF) return -1;
-    if (ret != 1) { flush_input(); printf("  Invalid input.\n"); return -2; }
-    flush_input();
-    if (num == 0) return -1;
-    if (num >= 1 && num <= state_count) return num - 1;
-    printf("  Invalid serial no.\n");
-    return -2;
-}
-
 int select_city(int state_idx) {
     char *sel_state = state_list[state_idx];
     int city_indices[MAX_CITIES], city_count = 0;
@@ -100,8 +85,3 @@ void feature_crop_recommendation(void) {
         }
     }
 }
-
-
-
-
-

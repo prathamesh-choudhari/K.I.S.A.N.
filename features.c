@@ -93,3 +93,17 @@ for(int i=0;i<Costcount;i++){
 }
 if(Costcount%4!=0) printf("\n");
 }
+
+int select_state(void) {
+    int num;
+    showStates();
+    printf("\n  Enter state serial no.: ");
+    int ret = scanf("%d", &num);
+    if (ret == EOF) return -1;
+    if (ret != 1) { flush_input(); printf("  Invalid input.\n"); return -2; }
+    flush_input();
+    if (num == 0) return -1;
+    if (num >= 1 && num <= state_count) return num - 1;
+    printf("  Invalid serial no.\n");
+    return -2;
+}
