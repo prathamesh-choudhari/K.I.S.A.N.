@@ -5,16 +5,6 @@
 #include <ctype.h>
 #include "structs.h"
 
-typedef struct{
-    char state[20];
-    char city[20];
-    char type[20];
-    char season[20];
-    char crop[20];
-    int N,P,K;
-    float ph;
-}soilData;
-
 soilData soil_array[200];
 
 soilData *hash_table[100];
