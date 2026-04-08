@@ -1,0 +1,79 @@
+                                                                                       GOVERNMENT AGRICULTURE SCHEMES FOR INDIAN FARMERS
+1. PM-KISAN (Pradhan Mantri Kisan Samman Nidhi)
+   - Benefit : Rs. 6,000 per year in 3 installments of Rs. 2,000 each
+   - Eligible: All landholding farmer families
+   - Website : https://pmkisan.gov.in
+   - How to Apply: Visit nearest CSC center or apply online with Aadhaar & land records
+
+2. PMFBY (Pradhan Mantri Fasal Bima Yojana)
+   - Benefit : Crop insurance at subsidized premium rates
+   - Premium : Kharif 2%, Rabi 1.5%, Horticulture 5%
+   - Covers  : Natural calamities, pests, diseases, post-harvest losses
+   - Website : https://pmfby.gov.in
+   - How to Apply: Through bank, CSC, or insurance company agent
+
+3. Soil Health Card Scheme
+   - Benefit : Free soil testing and personalized fertilizer recommendations
+   - Issued  : Every 2 years to all farmers
+   - Tests   : 12 parameters including N, P, K, pH, EC, micronutrients
+   - Website : https://soilhealth.dac.gov.in
+   - How to Apply: Contact nearest Krishi Vigyan Kendra (KVK)
+
+4. Kisan Credit Card (KCC)
+   - Benefit : Short-term crop loans at 4% interest (with subsidy)
+   - Limit   : Based on land holding and crop pattern
+   - Features: ATM-enabled card, personal accident insurance of Rs. 50,000
+   - Website : Apply through any nationalized or cooperative bank
+   - How to Apply: Visit nearest bank branch with land documents
+
+5. PM Krishi Sinchai Yojana (PMKSY)
+   - Benefit : Subsidies for micro-irrigation (drip & sprinkler systems)
+   - Subsidy : Up to 55% for general, 70% for SC/ST/small farmers
+   - Motto   : "Har Khet Ko Paani" (Water to every field)
+   - Website : https://pmksy.gov.in
+   - How to Apply: Apply through state agriculture department portal
+
+6. e-NAM (National Agriculture Market)
+   - Benefit : Online trading platform for agricultural commodities
+   - Features: Transparent price discovery, online payment
+   - Crops   : 200+ commodities listed
+   - Website : https://enam.gov.in
+   - How to Apply: Register as farmer/trader on eNAM portal
+
+7. Paramparagat Krishi Vikas Yojana (PKVY)
+   - Benefit : Rs. 50,000 per hectare for 3 years for organic farming
+   - Covers  : Organic inputs, certification, marketing
+   - Cluster : Groups of 50+ farmers in a cluster of 50 acres
+   - Website : https://pgsindia-ncof.gov.in
+   - How to Apply: Form a farmer group and apply through state agriculture department
+
+8. National Mission on Sustainable Agriculture (NMSA)
+   - Benefit : Promotes sustainable farming through soil & water conservation
+   - Covers  : Rainfed area development, soil health management
+   - Subsidy : Varies by component (50-100%)
+   - How to Apply: Contact District Agriculture Office
+
+9. Agricultural Infrastructure Fund (AIF)
+   - Benefit : Rs. 1 lakh crore financing facility for farm infrastructure
+   - Interest: 3% interest subvention on loans up to Rs. 2 crore
+   - Covers  : Cold storage, warehouses, processing units, sorting/grading
+   - Website : https://agriinfra.dac.gov.in
+   - How to Apply: Apply online through banks or Primary Agricultural Credit Societies
+
+10. Rashtriya Krishi Vikas Yojana (RKVY)
+    - Benefit : Flexible funding to states for agriculture development
+    - Covers  : Infrastructure, value chain, innovation, startups
+    - Special : RKVY-RAFTAAR for agri-startups (up to Rs. 25 lakh)
+    - How to Apply: Through state agriculture department
+
+11. National Horticulture Mission (NHM)
+    - Benefit : Subsidies for fruits, vegetables, spices, flowers cultivation
+    - Subsidy : 40-75% cost subsidy depending on the crop
+    - Covers  : Planting material, drip irrigation, greenhouses, cold storage
+    - How to Apply: Contact District Horticulture Office
+
+12. PM Kisan Maan Dhan Yojana
+    - Benefit : Pension of Rs. 3,000/month after age 60
+    - Contribution: Rs. 55-200/month based on entry age (18-40 years)
+    - Eligible: Small and marginal farmers with <2 hectare land
+    - How to Apply: Visit nearest CSC center with Aadhaar

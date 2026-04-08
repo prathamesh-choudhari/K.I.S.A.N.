@@ -5,6 +5,8 @@
 #include <ctype.h>
 #include "structs.h"
 
+soilData soil_array[200];
+
 soilData *hash_table[100];
 
 unsigned int hash(char *name)
@@ -24,7 +26,7 @@ unsigned int hash(char *name)
 void initialise_table_null(void)
 {
   for(int i=0;i<100;i++)
-    *hash_table = NULL;
+    hash_table[i] = NULL;
 }
 
 void load_soil_data(void) {
@@ -35,17 +37,29 @@ void load_soil_data(void) {
 int soil_count=0;
     while (fgets(line, 200, fp) && soil_count < 100) {
         trim(line);
-      struct soilData d;
+      soilData d;
         if (strlen(line) == 0) continue;
-       int n = sscanf(line, "%[^,],%[^,],%[^,],%d,%d,%d,%f,%[^,],%s",
+       int n = sscanf(line, "%[^,],%[^,],%[^,],%[^,],%[^,],%d,%d,%d,%f",
             d.state, d.city,
-            d.soil_type, &d.N,
+            d.type, d.season,
+            d.crop , &d.N,
             &d.P, &d.K,
-            &d.pH, d.best_crop,
-            d.season);
-        if (n == 9) soil_count++;
+            &d.ph);
+        if (n == 9)
+    {
+        int index = hash(d.city);
+
+        while (hash_table[index] != NULL)
+            index = (index + 1) % 100;
+
+        soil_array[index] = d;
+        hash_table[index] = &soil_array[index];
+
+        soil_count++;
+    }
 
       int index = hash(d.city);
-      soilData[index]=d;
-    }}
+      soil_db[index]=d;
+    }
     fclose(fp);
+}

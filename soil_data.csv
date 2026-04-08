@@ -1,0 +1,65 @@
+State,City,Soil_Type,N,P,K,pH,Best_Crop,Season
+Maharashtra,Pune,Black,90,42,45,6.8,Soybean,Kharif
+Maharashtra,Mumbai,Laterite,60,30,35,5.5,Rice,Kharif
+Maharashtra,Nagpur,Black,85,50,40,7.2,Cotton,Kharif
+Maharashtra,Nashik,Red,75,38,42,6.5,Grape,Rabi
+Maharashtra,Aurangabad,Black,83,41,40,7.1,Jowar,Kharif
+Maharashtra,Solapur,Black,82,41,39,7.3,Jowar,Kharif
+Maharashtra,Kolhapur,Laterite,78,37,41,6.4,Sugarcane,Kharif
+Rajasthan,Jaipur,Sandy,55,25,30,8.0,Bajra,Kharif
+Rajasthan,Jodhpur,Desert,40,20,25,8.5,Guar,Kharif
+Rajasthan,Udaipur,Sandy,52,24,28,7.9,Maize,Kharif
+Rajasthan,Kota,Alluvial,80,38,40,7.3,Soybean,Kharif
+Uttar Pradesh,Lucknow,Alluvial,95,48,50,7.0,Wheat,Rabi
+Uttar Pradesh,Varanasi,Alluvial,90,45,48,6.9,Rice,Kharif
+Uttar Pradesh,Kanpur,Alluvial,88,44,46,7.1,Wheat,Rabi
+Uttar Pradesh,Agra,Alluvial,91,45,48,7.0,Mustard,Rabi
+Uttar Pradesh,Meerut,Alluvial,93,47,50,7.0,Sugarcane,Kharif
+Madhya Pradesh,Bhopal,Black,82,40,38,7.3,Soybean,Kharif
+Madhya Pradesh,Indore,Black,87,46,43,7.0,Wheat,Rabi
+Madhya Pradesh,Jabalpur,Black,81,40,39,7.2,Gram,Rabi
+Madhya Pradesh,Ujjain,Black,84,43,41,7.1,Soybean,Kharif
+Tamil Nadu,Chennai,Red,65,32,36,6.2,Rice,Kharif
+Tamil Nadu,Coimbatore,Red,70,35,40,6.4,Cotton,Kharif
+Tamil Nadu,Madurai,Red,67,31,37,6.3,Rice,Kharif
+Tamil Nadu,Salem,Red,68,33,38,6.3,Turmeric,Kharif
+Telangana,Hyderabad,Red,72,36,38,6.6,Maize,Kharif
+Telangana,Warangal,Red,73,35,38,6.7,Cotton,Kharif
+Telangana,Karimnagar,Black,79,38,40,7.0,Rice,Kharif
+West Bengal,Kolkata,Alluvial,92,47,52,6.8,Rice,Kharif
+West Bengal,Siliguri,Alluvial,86,42,45,6.4,Jute,Kharif
+West Bengal,Bardhaman,Alluvial,90,46,50,6.7,Rice,Kharif
+Bihar,Patna,Alluvial,94,46,49,7.0,Wheat,Rabi
+Bihar,Gaya,Alluvial,88,43,46,6.9,Rice,Kharif
+Bihar,Muzaffarpur,Alluvial,91,45,48,6.8,Maize,Kharif
+Jharkhand,Ranchi,Red,68,33,37,5.8,Potato,Rabi
+Jharkhand,Dhanbad,Red,66,32,36,5.9,Potato,Rabi
+Chhattisgarh,Raipur,Red,74,37,39,6.3,Rice,Kharif
+Chhattisgarh,Bilaspur,Red,72,35,38,6.4,Rice,Kharif
+Punjab,Amritsar,Alluvial,96,50,55,7.2,Wheat,Rabi
+Punjab,Ludhiana,Alluvial,95,49,54,7.1,Rice,Kharif
+Punjab,Patiala,Alluvial,94,48,53,7.0,Wheat,Rabi
+Haryana,Chandigarh,Alluvial,93,49,53,7.1,Wheat,Rabi
+Haryana,Karnal,Alluvial,92,48,52,7.0,Rice,Kharif
+Haryana,Hisar,Sandy,70,34,38,7.8,Mustard,Rabi
+Gujarat,Ahmedabad,Sandy,58,28,32,7.8,Groundnut,Kharif
+Gujarat,Surat,Black,80,39,41,7.0,Sugarcane,Kharif
+Gujarat,Rajkot,Black,79,38,40,7.4,Groundnut,Kharif
+Gujarat,Vadodara,Black,81,40,41,7.1,Cotton,Kharif
+Uttarakhand,Dehradun,Forest,78,36,44,6.0,Rice,Kharif
+Uttarakhand,Haridwar,Alluvial,85,42,46,6.8,Wheat,Rabi
+Himachal Pradesh,Shimla,Mountain,65,30,35,5.5,Apple,Rabi
+Himachal Pradesh,Kullu,Mountain,62,28,33,5.6,Apple,Rabi
+Karnataka,Mysore,Red,71,34,39,6.5,Turmeric,Kharif
+Karnataka,Mangalore,Laterite,64,31,36,5.7,Arecanut,Kharif
+Karnataka,Belgaum,Black,84,42,41,7.0,Sugarcane,Kharif
+Karnataka,Hubli,Black,80,40,40,7.1,Jowar,Kharif
+Andhra Pradesh,Vijayawada,Alluvial,89,43,47,6.9,Rice,Kharif
+Andhra Pradesh,Tirupati,Red,70,34,38,6.5,Groundnut,Kharif
+Andhra Pradesh,Guntur,Black,82,41,42,7.0,Cotton,Kharif
+Kerala,Thiruvananthapuram,Laterite,62,29,34,5.6,Coconut,Kharif
+Kerala,Kochi,Laterite,60,28,33,5.5,Rice,Kharif
+Assam,Guwahati,Alluvial,88,43,46,6.5,Tea,Kharif
+Assam,Jorhat,Alluvial,86,42,45,6.4,Tea,Kharif
+Odisha,Bhubaneswar,Laterite,70,33,37,5.8,Rice,Kharif
+Odisha,Cuttack,Alluvial,85,42,45,6.7,Rice,Kharif

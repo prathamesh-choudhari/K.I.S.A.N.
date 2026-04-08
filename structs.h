@@ -20,4 +20,6 @@ typedef struct{
     float yield;
 }cost;
 
+struct soilData soil_array[200];
+
 #endif
