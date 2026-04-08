@@ -17,7 +17,8 @@ typedef struct{
 
 soilData soil_array[200];
 
-soilData *hash_table[100];
+soilData *hash_table[200];
+soilData *hash_table2[200];
 
 unsigned int hash(char *name)
 {
@@ -39,13 +40,15 @@ void initialise_table_null(void)
     hash_table[i] = NULL;
 }
 
-void load_soil_data(void) {
+void LoadSoilData(void) 
+{
     FILE *fp = fopen("soil_data.csv", "r");
     if (!fp) { printf("  ERROR: Cannot open soil_data.csv!\n"); return; }
     char line[200];
     fgets(line, 200, fp);
-int soil_count=0;
-    while (fgets(line, 200, fp) && soil_count < 100) {
+    int soil_count=0;
+    while (fgets(line, 200, fp) && soil_count < 200) 
+    {
         trim(line);
       soilData d;
         if (strlen(line) == 0) continue;
@@ -56,7 +59,7 @@ int soil_count=0;
             &d.P, &d.K,
             &d.ph);
         if (n == 9)
-    {
+        {
         int index = hash(d.city);
 
         while (hash_table[index] != NULL)
@@ -66,10 +69,36 @@ int soil_count=0;
         hash_table[index] = &soil_array[index];
 
         soil_count++;
+        }
     }
+    fclose(fp);
+}
 
-      int index = hash(d.city);
-      soil_db[index]=d;
+void LoadCost(void)
+{
+     FILE *fp = fopen("soil_data.csv", "r");
+    if (!fp) { printf("  ERROR: Cannot open soil_data.csv!\n"); return; }
+    char line[200];
+    fgets(line, 200, fp);
+    int crop_count=0;
+    while(fgets(line,200,fp) && crop_count< 200)
+    {
+        trim(line);
+        cost c;
+        if(strlen(line)==0) continue;
+        int m=sscanf(line, "%[^,],%f,%f,%f,%f,%f",c.crop, &c.seedCost ,
+                         &c.expenses , &c.msp , &c.sellingPrice , &c.yield);
+        if(m == 6)
+        {
+            int index = hash(c.crop);
+
+            while(hash_table2[index] !=NULL)
+            index = (index+1)%200;
+
+            cost_array[index] =  c;
+            hash_table2[index] = &cost_array[index];
+            crop_count++;
+        }
     }
     fclose(fp);
 }
