@@ -109,29 +109,11 @@ void feature_crop_recommendation(void) {
 
 void ShowCrops(void) {
 printf("\nAvailable crops:\n");
-    for(int i=0;i<Costcount;i++){
-        printf("%2d.%-14s", i+1, cost_db[i].crop);
-        if((i+1)%4==0) printf("\n");
-    }
-    if(cost_count%4!=0) printf("\n");
+for(int i=0;i<Costcount;i++){
+    printf("%2d.%-14s",i+1,Costdata[i].crop);
+    if((i+1)%4==0) printf("\n");
+}
+if(Costcount%4!=0) printf("\n");
 }
 
-int SelectCrop(void) {
-    int n;
-    ShowCrops();
-    printf("Enter crop number:");
-    int ret=scanf("%d",&n);
-    if(ret==EOF) return -1;
-    if(ret!=1) {
-        flush_input();
-        printf("Invalid input\n");
-        return -2;
-    }
-    flush_input();
-    if(n==0) return -1;
-    if(n>=1&&n<= Costcount){
-        return n - 1;
-    }
-    printf("Invalid serial number");
-    return -2;
-}
+
