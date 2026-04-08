@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -47,6 +46,6 @@ int soil_count=0;
         if (n == 9) soil_count++;
 
       int index = hash(d.city);
-      soil_db[index]=d;
+      soilData[index]=d;
     }}
     fclose(fp);
