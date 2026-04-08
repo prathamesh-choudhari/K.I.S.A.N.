@@ -1,0 +1,25 @@
+#include<stdio.h>
+#include<string.h.
+#include"structs.h"
+#include"globals.h"
+
+void LoadCost(void){
+    FILE *fp=fopen("crop_costs.ccsv", "r");
+
+
+Costcount=0;
+
+while(fscanf(file,"%19[^,],%f,%f,%f,%f,%f\n",
+cost[Costcount].crop,
+&cost[Costcount].seedCost,
+&cost[Costcount].expenses,
+&cost[Costcount].msp,
+&cost[Costcount].sellingPrice,
+&cost[Costcount].yield==6)){
+    Costcount++;
+    if(Costcount>=20){
+        break;
+    }
+}
+fclose(file);
+}
