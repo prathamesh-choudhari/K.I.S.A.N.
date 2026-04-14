@@ -5,7 +5,7 @@
 
 #include "features.h"
 #include "globals.h"
-
+    
 void schemes(void) {
     FILE *fp = fopen("schemes.txt", "r");
 
@@ -41,7 +41,7 @@ void SateList(void) {
     for (int i = 0; i < soil_count; i++) {
         int found = 0;
         for (int j = 0; j < state_count; j++) {
-            if (_stricmp(soilData[i].state, state[j]) == 0) { found = 1; break; }
+            if (str_icmp(soilData[i].state, state[j]) == 0) { found = 1; break; }
         }
         if (!found && state_count < MAX_STATES) {
             strcpy(state[state_count], soilData[i].state);
@@ -51,7 +51,7 @@ void SateList(void) {
     char temp[NAME_LEN];
     for (int i = 0; i < Statecount - 1; i++)
         for (int j = 0; j < Statecount - i - 1; j++)
-            if (_stricmp(state_list[j], state_list[j+1]) > 0) {
+            if (str_icmp(state_list[j], state_list[j+1]) > 0) {
                 strcpy(temp, state_list[j]);
                 strcpy(state_list[j], state_list[j+1]);
                 strcpy(state_list[j+1], temp);
@@ -107,7 +107,7 @@ int select_state(void) {
     printf("  Invalid serial no.\n");
     return -2;
 }
-void display_crop_report(int idx) {
+void crop_report(int idx) {
     SoilData d = soil_db[idx];
     printf("\n  CROP REPORT: %s, %s\n", d.city, d.state);
     printf("  Soil Type    : %s\n", d.soil_type);
@@ -133,7 +133,7 @@ void display_crop_report(int idx) {
     else printf("  pH in acceptable range (%.1f).\n", d.pH);
 }
 
-void feature_crop_recommendation(void) {
+void crop_recommendation(void) {
     printf("\n  CROP RECOMMENDATION\n");
     while (1) {
         int si = select_state();
@@ -143,13 +143,13 @@ void feature_crop_recommendation(void) {
             int ci = select_city(si);
             if (ci == -1) break;
             if (ci == -2) continue;
-            display_crop_report(ci);
+            crop_report(ci);
              waitforenter();
         }
     }
 }
 
-int select_city(int state_idx) {
+int selectcity(int state_idx) {
     char *sel_state = state_list[state_idx];
     int city_indices[MAX_CITIES], city_count = 0;
     for (int i = 0; i < soil_count; i++)
