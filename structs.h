@@ -20,8 +20,4 @@ typedef struct{
     float yield;
 }cost;
 
-soilData soil_array[200];
-
-cost cost_array[200];
-
 #endif
