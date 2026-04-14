@@ -174,3 +174,13 @@ int selectcity(int state_idx) {
     printf("  Invalid serial no.\n");
     return -2;
 }
+
+
+int str_icmp(const char *a, const char *b) {
+    while (*a && *b) {
+        int d = tolower((unsigned char)*a) - tolower((unsigned char)*b);
+        if (d) return d;
+        a++; b++;
+    }
+    return tolower((unsigned char)*a) - tolower((unsigned char)*b);
+}
