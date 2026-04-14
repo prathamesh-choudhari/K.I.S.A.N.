@@ -1,34 +1,38 @@
-void calculateProfit(void) {
+void calculateProfit(void)
+{
     float area, expectedPrice;
     int cropIndex;
     printf("\n  PROFIT CALCULATOR\n");
 
-    while (1) {
-        // int cropIndex = chooseCrop();
-        
-        // if (cropIndex == -1) return;
-        // if (cropIndex == -2) continue;
-        take_crop();
+    while (1)
+    {
+        int cropindex = selectcrop();
+
+        if (cropindex == -1)
+            return;
+        if (cropindex == -2)
+            continue;
+
         char name[60];
-        cropIndex=hash(name);
+        cropIndex = hash(name);
 
         cost crop;
-        crop = crop_array[cropIndex];
-            
-        
+        crop = crop_array[cropindex];
 
         printf("\n  Enter land area (in acres): ");
         int inputCheck = scanf("%f", &area);
 
-        if (inputCheck == EOF) return;
+        if (inputCheck == EOF)
+            return;
 
-        if (inputCheck != 1 || area <= 0) {
+        if (inputCheck != 1 || area <= 0)
+        {
             printf("  Invalid input. Please enter a valid area.\n");
-            clearInputBuffer();
+            flush_input();
             continue;
         }
 
-        clearInputBuffer();
+        flush_input();
 
         float seedCostTotal = crop.seedcost * area;
         float farmingCostTotal = crop.expenses * area;
@@ -48,7 +52,8 @@ void calculateProfit(void) {
         printf("  Total Investment     : Rs. %.2f\n", totalCost);
         printf("  Total Production     : %.2f quintals\n", totalProduction);
 
-        if (crop.msp > 0) {
+        if (crop.msp > 0)
+        {
             printf("  Revenue (MSP)        : Rs. %.2f\n", revenueMSP);
             printf("  Profit (MSP)         : Rs. %.2f %s\n",
                    profitMSP,
@@ -60,6 +65,6 @@ void calculateProfit(void) {
                profitMarket,
                profitMarket >= 0 ? "[PROFIT]" : "[LOSS]");
 
-        waitForEnter();
+        waitforenter();
     }
 }
