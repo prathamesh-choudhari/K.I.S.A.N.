@@ -3,11 +3,15 @@
 
 #include "structs.h"
 
-extern soilData Soildata[100];
+extern soilData soil_array[TABLE_SIZE];
 extern int Soilcount;
 
-extern cost Costdata[20];
+extern cost cost_array[TABLE_SIZE];
 extern int Costcount;
+
+extern soilData Soildata[200];
+
+extern cost Costdata[200];
 
 extern char State[30][20];
 extern int Statecount;
