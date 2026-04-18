@@ -19,17 +19,14 @@ KISAN is a console-based application that helps farmers with **crop recommendati
 
 ### Steps
 
-1. **Download** the following files from this repository:
-   - `kisan.exe`
-   - `soil_data.csv`
-   - `crop_costs.csv`
-   - `schemes.txt`
+**Download and Setup:**
+1. Go to the **Releases** section on the right side of this repository page.
+2. Download the latest project `.zip` file from the **Assets** dropdown.
+3. Extract the downloaded `.zip` file to a folder on your computer. This folder contains the executable (`kisan.exe`) and all necessary data files required to run the program.
 
-2. **Place all files in the same folder.** This is important — the program reads data from the CSV and text files, so they must be in the same directory as the `.exe`.
+4. **Double-click `kisan.exe`** to run the program.
 
-3. **Double-click `kisan.exe`** to run the program.
-
-4. Follow the on-screen menu to use the features.
+5. Follow the on-screen menu to use the features.
 
 > **Note:** If Windows shows a security warning ("Windows protected your PC"), click **More info** → **Run anyway**. This is normal for `.exe` files downloaded from the internet.
 
